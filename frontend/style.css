@@ -1,0 +1,316 @@
+.el-header {
+    background-color: #f5f7fa;
+    padding: 20px;
+}
+
+.el-aside {
+    padding: 20px;
+}
+
+.el-main {
+    padding: 20px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.card-header span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #303133;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.el-card__header {
+    padding: 15px 20px;
+}
+
+.el-card__body {
+    padding: 0 20px 20px 20px;
+}
+
+.button-group .el-button {
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.current-config {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f7fa;
+    border-radius: 4px;
+}
+
+.current-config h3 {
+    margin: 0 0 10px 0;
+    color: #409EFF;
+    font-size: 16px;
+}
+
+.current-config p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.no-config {
+    margin-top: 20px;
+}
+
+.json-editor {
+    margin-top: 10px;
+}
+
+.json-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.json-item:last-child {
+    margin-bottom: 0;
+}
+
+.import-container {
+    padding: 10px;
+}
+
+.import-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
+}
+
+.import-section h4 {
+    margin: 0 0 15px 0;
+    color: #606266;
+}
+
+.file-upload {
+    margin-bottom: 10px;
+}
+
+.el-upload__tip {
+    color: #909399;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.config-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.full-width-button {
+    width: 100%;
+}
+
+/* 添加搜索结果样式 */
+.search-results {
+    margin-top: 20px;
+}
+
+.search-results pre {
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f5f7fa;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* 添加导航栏样式 */
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-header h2 {
+    margin: 0;
+    white-space: nowrap;
+    margin-right: 20px;
+}
+
+.page-container {
+    min-height: calc(100vh - 120px);
+    padding: 20px;
+    width: 100%;
+}
+
+/* 调整el-menu样式 */
+.el-menu.el-menu--horizontal {
+    border-bottom: none;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.el-menu--horizontal > .el-menu-item {
+    height: 50px;
+    line-height: 50px;
+    white-space: nowrap;
+}
+
+/* 修改和添加样式 */
+.config-panel {
+    height: 100%;
+    min-height: calc(100vh - 180px);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.current-config {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f7fa;
+    border-radius: 4px;
+}
+
+.current-config h3 {
+    margin: 0 0 10px 0;
+    color: #409EFF;
+    font-size: 16px;
+}
+
+.current-config p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.no-config {
+    margin-top: 20px;
+}
+
+.config-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.config-buttons .el-button {
+    flex: 1;
+}
+
+.full-width-button {
+    width: 100%;
+}
+
+/* 调整表格样式 */
+.el-table {
+    margin-top: 20px;
+}
+
+.el-table .el-button-group {
+    display: flex;
+    gap: 5px;
+}
+
+/* 调整搜索框样式 */
+.el-input-group {
+    margin-top: 10px;
+}
+
+/* 调整卡片内边距 */
+.el-card__body {
+    padding: 20px;
+}
+
+/* 调整页面容器样式 */
+.page-container {
+    min-height: calc(100vh - 120px);
+    padding: 20px;
+}
+
+/* 调整行间距 */
+.el-row {
+    margin-bottom: 20px;
+}
+
+/* 调整右侧数据管理面板 */
+.el-card {
+    height: 100%;
+    min-height: calc(100vh - 180px);
+}
+
+/* 搜索参数设置样式 */
+.param-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.param-label {
+    font-size: 14px;
+    color: #606266;
+    margin-bottom: 5px;
+}
+
+.param-tip {
+    font-size: 12px;
+    color: #909399;
+    margin-top: 5px;
+}
+
+/* 确保滑块和数字输入框的容器有足够空间 */
+.el-slider {
+    margin: 10px 0;
+}
+
+.el-input-number {
+    margin: 10px 0;
+}
+
+/* 添加集合编辑器样式 */
+.collection-editor {
+    margin: -20px;
+    padding: 20px;
+}
+
+.editor-toolbar {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f5f7fa;
+    border-radius: 4px;
+}
+
+.el-table .el-form {
+    margin: 10px 0;
+}
+
+.el-table .el-form-item {
+    margin-bottom: 10px;
+}
+
+.el-table pre {
+    margin: 0;
+    padding: 10px;
+    background-color: #f5f7fa;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+} 
