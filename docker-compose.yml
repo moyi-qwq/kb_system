@@ -1,17 +1,41 @@
 version: '3.8'
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8528:8000"
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+    depends_on:
+      - elasticsearch
+    networks:
+      - kb_network
+    volumes:
+      - ./src:/app/src
+    restart: unless-stopped
+
   elasticsearch:
-    container_name: elsticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
       - "9200:9200"
-      - "9300:9300"
+    networks:
+      - kb_network
     volumes:
-      - data:/data
-    environment:
-      - "discovery.type=single-node"
-      - "xpack.security.enabled=false"
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    restart: unless-stopped
+
+networks:
+  kb_network:
+    driver: bridge
 
 volumes:
-  data:
+  elasticsearch_data:
+    driver: local
