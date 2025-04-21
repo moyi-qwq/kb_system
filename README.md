@@ -9,7 +9,10 @@
 - FastAPI
 - Uvicorn
 
-## 安装
+## Docker部署
+可在docker-compose.yml文件中修改
+
+## 源码安装
 
 1. 安装依赖：
 ```bash
