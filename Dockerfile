@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/python:3.10-slim
 
 WORKDIR /app
 

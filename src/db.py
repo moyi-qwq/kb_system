@@ -1,43 +1,43 @@
 from elasticsearch import AsyncElasticsearch
-from .config import settings
+from .config import ELASTICSEARCH_URL
 from .models import IndexMetadata
 
 class ElasticsearchClient:
     _instance = None
     
     @classmethod
-    async def get_client(cls) -> AsyncElasticsearch:
+    async def get_client(cls):
         if cls._instance is None:
             cls._instance = AsyncElasticsearch(
-                hosts=[f"http://{settings.ES_HOST}:{settings.ES_PORT}"],
-                basic_auth=(settings.ES_USER, settings.ES_PASSWORD) if settings.ES_USER and settings.ES_PASSWORD else None
+                ELASTICSEARCH_URL,
+                verify_certs=False
             )
         return cls._instance
     
     @classmethod
     async def close(cls):
-        if cls._instance:
+        if cls._instance is not None:
             await cls._instance.close()
             cls._instance = None
 
     @classmethod
     async def create_index(cls, metadata: IndexMetadata, mappings: dict):
         es = await cls.get_client()
-        await es.indices.create(
-            index=metadata.name,
-            mappings={
-                "properties": {
-                    **mappings,
-                    "kb_type": {"type": "keyword"}
-                }
-            }
-        )
-        # 设置索引的元数据
-        await es.index(
-            index="kb_metadata",
-            id=metadata.name,
-            document=metadata.dict()
-        )
+        try:
+            # 创建索引
+            await es.indices.create(
+                index=metadata.name,
+                mappings={"properties": mappings}
+            )
+            
+            # 存储索引元数据
+            await es.index(
+                index="kb_metadata",
+                id=metadata.name,
+                document=metadata.dict()
+            )
+        except Exception as e:
+            raise Exception(f"Failed to create index: {str(e)}")
 
     @classmethod
     async def get_index_type(cls, index_name: str) -> str:
@@ -49,12 +49,12 @@ class ElasticsearchClient:
             return None
 
     @classmethod
-    async def list_indices_by_type(cls, kb_type: str) -> list:
+    async def list_indices_by_type(cls, index_type: str) -> list:
         es = await cls.get_client()
         try:
             result = await es.search(
                 index="kb_metadata",
-                query={"term": {"type": kb_type}}
+                query={"term": {"type": index_type}}
             )
             return [hit["_id"] for hit in result["hits"]["hits"]]
         except Exception:
@@ -63,5 +63,10 @@ class ElasticsearchClient:
     @classmethod
     async def delete_index(cls, index_name: str):
         es = await cls.get_client()
-        await es.indices.delete(index=index_name)
-        await es.delete(index="kb_metadata", id=index_name) 
+        try:
+            # 删除索引
+            await es.indices.delete(index=index_name)
+            # 删除元数据
+            await es.delete(index="kb_metadata", id=index_name)
+        except Exception as e:
+            raise Exception(f"Failed to delete index: {str(e)}") 
