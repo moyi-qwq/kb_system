@@ -8,8 +8,8 @@ services:
     ports:
       - "8528:8528"
     environment:
-      - ELASTICSEARCH_HOST=elasticsearch
-      - ELASTICSEARCH_PORT=9200
+      - ES_HOST=elasticsearch
+      - ES_PORT=9200
     depends_on:
       - elasticsearch
     networks:
