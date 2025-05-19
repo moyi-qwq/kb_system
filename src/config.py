@@ -7,8 +7,8 @@ from typing import Optional
 load_dotenv()
 
 # Elasticsearch配置
-ELASTICSEARCH_HOST = os.getenv("ELASTICSEARCH_HOST", "elasticsearch")
-ELASTICSEARCH_PORT = int(os.getenv("ELASTICSEARCH_PORT", "9200"))
+ELASTICSEARCH_HOST = os.getenv("ES_HOST", "elasticsearch")
+ELASTICSEARCH_PORT = int(os.getenv("ES_PORT", "9200"))
 
 # 构建Elasticsearch连接URL
 ELASTICSEARCH_URL = f"http://{ELASTICSEARCH_HOST}:{ELASTICSEARCH_PORT}"
